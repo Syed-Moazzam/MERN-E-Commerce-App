@@ -198,25 +198,23 @@ function Delivery() {
         w={{ base: "90%", sm: "90%", md: "90%", lg: "90%", xl: "30%" }}
         mt={{ base: "20px", sm: "20px", md: "20px", lg: "20px", xl: "1px" }}
       >
-        <StripeCheckout
-          stripeKey={
-            "pk_test_51NHrzDESxeXqLxczuBm1MLWgFZZKFQj5zaH2HwXDmfluNP3mrR8gdh2z8l6ZVInWVoma6Gu4yP9nchi8JTWrNQan006l7Bdd1T"
-          }
-          label={
-            <span>
-              Proceed to Pay{" "}
-              <AiFillRightCircle style={{ marginLeft: "10px" }} />
-            </span>
-          }
-          name="Pay With Credit Card"
-          billingAddress
-          shippingAddress
-          amount={(amountToPay * 100) / dollarPrice}
-          description={`Your total is Rs. ${amountToPay}`}
-          token={handlePayment}
-          className="stripe-pay-btn"
-          disabled={!deliveryAmount}
-        />
+        <Box position={'relative'}>
+          <StripeCheckout
+            stripeKey={
+              "pk_test_51NHrzDESxeXqLxczuBm1MLWgFZZKFQj5zaH2HwXDmfluNP3mrR8gdh2z8l6ZVInWVoma6Gu4yP9nchi8JTWrNQan006l7Bdd1T"
+            }
+            label="Proceed to Pay"
+            name="Pay With Credit Card"
+            billingAddress
+            shippingAddress
+            amount={(amountToPay * 100) / dollarPrice}
+            description={`Your total is Rs. ${amountToPay}`}
+            token={handlePayment}
+            className="stripe-pay-btn"
+            disabled={!deliveryAmount}
+          />
+          {deliveryAmount > 0 && <AiFillRightCircle fill="#fff" style={{ position: 'absolute', top: '0.9rem', right: '4rem' }} />}
+        </Box>
         <Hide below="lg">
           <Box>
             <Heading mb="0px" fontSize="xl" color="#889dad" p="10px">
@@ -301,7 +299,6 @@ function Delivery() {
                         on this order
                       </Flex>
                     </Box>
-                    <AccordionIcon color="#3bb896" />
                   </AccordionButton>
                 </h2>
               </AccordionItem>

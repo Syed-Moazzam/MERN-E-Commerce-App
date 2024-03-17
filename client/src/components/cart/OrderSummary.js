@@ -84,7 +84,8 @@ function OrderSummary() {
           </AccordionItem>
         </Accordion>
         <Button
-          disabled={cartItems.length < 1}
+          pointerEvents={!cartItems?.length && 'none'}
+          opacity={!cartItems?.length && '0.6'}
           width={"100%"}
           onClick={() => navigate("/delivery")}
           colorScheme={"teal"}

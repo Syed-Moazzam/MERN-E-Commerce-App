@@ -21,13 +21,13 @@ function CartStack() {
 
   return (
     <VStack width={"100%"}>
-      {cartItems.map((el) =>
+      {cartItems.map((el, index) =>
         !loading ? (
-          <CartProduct key={el.id} data={el} />
+          <CartProduct key={index} data={el} />
         ) : (
           <Skeleton key={`skeleton-${el.id}`}>
             {" "}
-            <CartProduct key={el.id} data={el} />
+            <CartProduct key={index} data={el} />
           </Skeleton>
         )
       )}
