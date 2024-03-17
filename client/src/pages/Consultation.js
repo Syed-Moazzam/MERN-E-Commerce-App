@@ -230,7 +230,7 @@ const Consultation = () => {
                     </div>
                   </div>
                 </div>
-              )) : <h3 style={{ color: 'grey', marginTop: '3rem', textAlign: 'center' }}>No Doctors Are Registered At The Moment!</h3>}
+              )) : <h3 style={{ color: 'grey', marginTop: '3rem', textAlign: 'center' }}>No Doctors Are Registered Currently!</h3>}
             </div>
           </div>
         </section>
