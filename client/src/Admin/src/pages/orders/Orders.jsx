@@ -13,10 +13,8 @@ const Orders = () => {
   useEffect(() => {
     getAllOrdersAdmin()
       .then((res) => {
-        console.log(res);
         if (res.data && res.data.data && res.data.data.length > 0) {
           let fetchData = res.data.data;
-          console.log(fetchData);
           if (fetchData.length > 0) {
             let tableHeader = [
               "Order ID",

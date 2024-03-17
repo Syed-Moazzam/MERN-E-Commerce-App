@@ -7,6 +7,7 @@ import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { AiFillEye } from "react-icons/ai";
 import CustomBadge from "../customBadge/CustomBadge";
 import { deleteDoctor, deleteProduct } from "../../../../api/api";
+import { Spinner } from '@chakra-ui/react'
 
 import {
   AlertDialog,
@@ -22,9 +23,10 @@ import {
 } from "@chakra-ui/react";
 
 const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
-  const [data, setData] = useState(tableData.tableBody);
+  const [data, setData] = useState(tableData?.tableBody);
   const [deleteId, setDeleteId] = useState("");
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef();
@@ -82,6 +84,10 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
     onOpen();
   };
 
+  setTimeout(() => {
+    setLoading(false);
+  }, 3800);
+
   return (
     <>
       <div className="datatable">
@@ -100,12 +106,12 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
           </div>
         )}
 
-        <Table striped style={{ margin: "0px", padding: "0px" }}>
+        {loading ? <div className="w-100 text-center mt-5"><Spinner size='xl' thickness='4px' emptyColor='gray.200' /></div> : tableData?.tableHeader?.length > 0 && data?.length > 0 ? <Table striped style={{ margin: "0px", padding: "0px" }}>
           <thead>
             {tableData?.tableHeader?.length > 0 && (
               <tr style={{ textAlign: "center" }}>
                 {tableTitle === "Products" && <th></th>}
-                {tableData?.tableHeader?.map((value) => {
+                {tableData?.tableHeader?.map((value, index) => {
                   if (
                     value !== "_id" &&
                     value !== "img1" &&
@@ -113,7 +119,7 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
                   ) {
                     return (
                       <td
-                        key={value}
+                        key={index}
                         style={{ fontWeight: "bold", fontSize: "14px" }}
                       >
                         {value.toUpperCase()}
@@ -128,9 +134,10 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
 
           {data?.length > 0 && (
             <tbody>
-              {data?.map(({ _id, img1, ...eachRecord }) => {
+              {data?.map(({ _id, img1, ...eachRecord }, index) => {
                 return (
                   <tr
+                    key={index}
                     style={{
                       textAlign: "center",
                       alignItems: "center",
@@ -151,19 +158,19 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
                         />
                       </td>
                     )}
-                    {Object.values(eachRecord)?.map((value) => {
+                    {Object.values(eachRecord)?.map((value, index) => {
                       return (
-                        <td>
+                        <td key={index}>
                           {value == "Pending" ||
-                          value == "In-process" ||
-                          value == "Delivered" ? (
+                            value == "In-process" ||
+                            value == "Delivered" ? (
                             <CustomBadge
                               bgColor={
                                 value == "Pending"
                                   ? "danger"
                                   : value == "In-process"
-                                  ? "primary"
-                                  : "success"
+                                    ? "primary"
+                                    : "success"
                               }
                               badgeText={value}
                             />
@@ -266,9 +273,10 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
               })}
             </tbody>
           )}
-        </Table>
+        </Table> : <h2 className="text-center mt-5">No Records Found!</h2>
+        }
 
-        {tableData.tableBody.length > 10 && (
+        {!loading && tableData?.tableBody?.length > 10 && (
           <div className="pagination-div">
             <PaginationControl
               page={page}

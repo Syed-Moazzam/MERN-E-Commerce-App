@@ -33,7 +33,6 @@ const ProductList = () => {
               return rest;
             }
           );
-          console.log(fetchData);
           if (fetchData.length > 0) {
             let tableHeader = Object.keys(fetchData[0]);
             let tableBody = fetchData.map((data) => {

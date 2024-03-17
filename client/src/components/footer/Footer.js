@@ -186,7 +186,7 @@ const Footer = () => {
               Follow us on
             </Heading>
             <Flex gap={4} flexWrap="wrap">
-              <Link to="https://github.com/sohaibamir/ecommerce-project">
+              <Link to="https://github.com/Syed-Moazzam/MERN-E-Commerce-App">
                 <Box h="30px" w="30px" mr="20px">
                   <Img src="/images/github.svg" w="100%" h="100%" alt=""></Img>
                 </Box>
@@ -344,7 +344,7 @@ const Footer = () => {
                 Follow us on
               </Heading>
               <Flex justify="flex-start" pr="20px" flexWrap="wrap">
-                <Link to="https://github.com/sohaibamir/ecommerce-project">
+                <Link to="https://github.com/Syed-Moazzam/MERN-E-Commerce-App">
                   <Box h="30px" w="30px" mr="20px">
                     <Img
                       src="/images/github.svg"
