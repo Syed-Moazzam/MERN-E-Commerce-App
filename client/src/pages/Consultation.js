@@ -111,7 +111,7 @@ const Consultation = () => {
           </div>
           <div className="container">
             <div className="row">
-              {filteredDoctors.map((doctor, index) => (
+              {filteredDoctors?.length > 0 ? filteredDoctors.map((doctor, index) => (
                 <div className="col-md-3 col-sm-4 mt-5 doctor-box" key={index}>
                   <div
                     className="team-thumb wow fadeInUp"
@@ -230,7 +230,7 @@ const Consultation = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              )) : <h3 style={{ color: 'grey', marginTop: '3rem', textAlign: 'center' }}>No Doctors Are Registered At The Moment!</h3>}
             </div>
           </div>
         </section>
