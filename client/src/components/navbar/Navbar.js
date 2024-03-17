@@ -199,8 +199,8 @@ function Navbar() {
                 </Box>
               </Box>
 
-              <Text fontSize="14px" align="right" pb="0" fontWeight="600">
-                74600 Karachi <b>⌵</b>
+              <Text fontSize="14px" align="center" pb="0" fontWeight="600">
+                74600 Karachi
               </Text>
             </Box>
           )}

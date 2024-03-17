@@ -24,16 +24,11 @@ import { createOrder, isAuthenticated } from "../api/api";
 import { clearCart } from "../redux/Cart/action";
 
 function Delivery() {
-  const { totalAmount, totalOriginalAmount } = useSelector(
-    (state) => state.cart
-  );
+  const { totalAmount, totalOriginalAmount, cartItems } = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
-
   const userId = isAuthenticated()._id;
-
   const toast = useToast();
-
   const navigate = useNavigate();
 
   const currentDate = new Date();
@@ -56,9 +51,19 @@ function Delivery() {
   });
 
   const handleChange = (e) => {
-    setDeliveryAmount(e.target.value);
-    setAmountToPay(totalAmount + parseInt(e.target.value));
-    console.log(e.target.value);
+    if (cartItems?.length > 0) {
+      setDeliveryAmount(e.target.value);
+      setAmountToPay(totalAmount + parseInt(e.target.value));
+    }
+    else {
+      toast({
+        title: "Please Add Items In Cart First!",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    }
   };
 
   const handlePayment = async (token) => {
@@ -88,7 +93,7 @@ function Delivery() {
       }
     } catch (error) {
       toast({
-        title: "Payment Was Not Successful!",
+        title: "Payment Was Not Successfull!",
         status: "error",
         duration: 3500,
         isClosable: true,
@@ -211,7 +216,7 @@ function Delivery() {
             description={`Your total is Rs. ${amountToPay}`}
             token={handlePayment}
             className="stripe-pay-btn"
-            disabled={!deliveryAmount}
+            disabled={!deliveryAmount || !cartItems?.length}
           />
           {deliveryAmount > 0 && <AiFillRightCircle fill="#fff" style={{ position: 'absolute', top: '0.9rem', right: '4rem' }} />}
         </Box>
