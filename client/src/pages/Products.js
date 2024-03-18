@@ -14,6 +14,7 @@ import {
   VStack,
   Button,
   CheckboxGroup,
+  Spinner,
 } from "@chakra-ui/react";
 
 import ProductsGrid from "../components/products/ProductGrid";
@@ -42,7 +43,7 @@ function Products() {
   };
   let arr = [];
   const [totalPages, setTotalPages] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { cat } = useParams();
   const newCat = cat.split("-");
   const catSplit = newCat.join(" ");
@@ -303,7 +304,7 @@ function Products() {
                 })}
               </HStack>
             }
-            {products?.length > 0 ? <ProductsGrid data={products} loading={loading} /> : <h3 style={{ textAlign: 'center', color: 'rgba(0, 0, 0, 0.7)' }}>No Data Available!</h3>}
+            {loading ? <Flex justifyContent="center" alignItems="center"><Spinner size="xl" thickness='4px' emptyColor='gray.200' /></Flex> : products?.length > 0 ? <ProductsGrid data={products} loading={loading} /> : <h3 style={{ textAlign: 'center', color: 'rgba(0, 0, 0, 0.7)' }}>No Data Available!</h3>}
 
             {
               <HStack mt={"50px"} justify="center" spacing={"5px"}>
