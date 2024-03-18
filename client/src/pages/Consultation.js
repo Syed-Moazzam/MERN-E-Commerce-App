@@ -230,7 +230,7 @@ const Consultation = () => {
                     </div>
                   </div>
                 </div>
-              )) : <h3 style={{ color: 'grey', marginTop: '3rem', textAlign: 'center' }}>No Doctors Are Registered Currently!</h3>}
+              )) : <h3 style={{ color: 'grey', marginTop: '3rem', textAlign: 'center' }}>No Doctors Are Registered Currently! <br />You Will Be Able To Consult Our Doctors Once They Are Registered By The Admin.</h3>}
             </div>
           </div>
         </section>
