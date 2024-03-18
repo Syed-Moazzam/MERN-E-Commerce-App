@@ -32,6 +32,7 @@ import { LoginIndividualSlider } from "../loginPages/QuickLogin";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "../../redux/Cart/action";
 import { isAuthenticated, isTokenValid } from "../../api/api";
+import { jwtDecode } from "jwt-decode";
 
 function Navbar() {
   const token = localStorage.getItem("token") || false;
@@ -114,6 +115,7 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <Box position={"relative"}>
       {scrollPosition > 200 && role !== "admin" && role !== "doctor" && (
@@ -206,7 +208,7 @@ function Navbar() {
           )}
         </Flex>
 
-        <Flex align="center" justifyContent="end" gap="20px">
+        <Flex align="center" justifyContent="center" gap="20px">
           {scrollPosition > 100 && role !== "admin" && role !== "doctor" && (
             <NavSearch />
           )}

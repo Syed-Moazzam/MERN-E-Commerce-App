@@ -219,7 +219,7 @@ export const isAuthenticated = () => {
 export const isTokenValid = () => {
   const token = localStorage.getItem('token');
   const decodedToken = token && jwtDecode(token);
-  const currentTime = Date.now();
+  const currentTime = Math.floor(Date.now() / 1000);
   if (decodedToken?.exp > currentTime) return true;
   else return false;
 };
