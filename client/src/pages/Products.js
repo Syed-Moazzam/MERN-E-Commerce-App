@@ -150,7 +150,7 @@ function Products() {
                 </HStack>
               </Box>
 
-              {
+              {subCat?.length &&
                 <Box width="100%">
                   <Text
                     fontSize={"16px"}
@@ -183,7 +183,7 @@ function Products() {
               }
 
               <Divider />
-              {
+              {filters?.length &&
                 <Box width="100%">
                   <Text
                     fontSize={"16px"}
@@ -196,7 +196,7 @@ function Products() {
 
                   <VStack
                     height={"300px"}
-                    overflow="hidden scroll"
+                    overflow={"hidden scroll"}
                     spacing={"20px"}
                     pr="10px"
                     width={"100%"}
@@ -303,7 +303,7 @@ function Products() {
                 })}
               </HStack>
             }
-            <ProductsGrid data={products} loading={loading} />
+            {products?.length > 0 ? <ProductsGrid data={products} loading={loading} /> : <h3 style={{ textAlign: 'center', color: 'rgba(0, 0, 0, 0.7)' }}>No Data Available!</h3>}
 
             {
               <HStack mt={"50px"} justify="center" spacing={"5px"}>

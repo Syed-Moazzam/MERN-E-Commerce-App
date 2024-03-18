@@ -73,13 +73,11 @@ export function LoginIndividualSlider() {
       .then((response) => response.json())
       .then((jsonresponse) => {
         if (jsonresponse.status === 200) {
-          console.log("logged in", jsonresponse.user);
           localStorage.setItem("jwt", JSON.stringify(jsonresponse.user));
 
           dispatch(getSuccess(true));
           localStorage.setItem("isAuth", true);
           localStorage.setItem("token", jsonresponse.token);
-          console.log(jsonresponse);
           toast({
             title: "Logged in Successfully",
             status: "success",
