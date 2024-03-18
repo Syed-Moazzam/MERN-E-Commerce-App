@@ -5,8 +5,8 @@ const { signup, login, checkLoggedIn, getAllUsers, getUserByIdAdmin, updateAppoi
 const { authMiddleware } = require("../middlewares/auth");
 
 router.get("/checkLoggedIn", authMiddleware, checkLoggedIn);
-router.post("/login", authMiddleware, login);
-router.post("/signup", authMiddleware, signup);
+router.post("/login", login);
+router.post("/signup", signup);
 router.get("/admin/getUsers", getAllUsers);
 router.get("/admin/getuser/:id", getUserByIdAdmin);
 router.patch('/updateAppointmenthistory/:userId/:doctorId', updateAppointmentHistory);

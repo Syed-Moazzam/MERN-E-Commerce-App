@@ -31,7 +31,7 @@ import Tabs from "./Tabs";
 import { LoginIndividualSlider } from "../loginPages/QuickLogin";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "../../redux/Cart/action";
-import { isAuthenticated } from "../../api/api";
+import { isAuthenticated, isTokenValid } from "../../api/api";
 
 function Navbar() {
   const token = localStorage.getItem("token") || false;
@@ -224,7 +224,7 @@ function Navbar() {
               </Box>
             </Link>
           )}
-          {role !== "admin" && role !== "doctor" && token && (
+          {role !== "admin" && role !== "doctor" && isTokenValid() && (
             <Link className="hover_green" to={"/orders"}>
               <Box display="flex" fontSize="14px">
                 <Box display="flex" alignItems="center" mr="5px">
@@ -243,7 +243,7 @@ function Navbar() {
               </Box>
             </Link>
           )}
-          {role !== "admin" && role !== "doctor" && token && (
+          {role !== "admin" && role !== "doctor" && isTokenValid() && (
             <Link className="hover_green" to={"/cart"}>
               <Box display="flex" fontSize="14px" pos={"relative"}>
                 {

@@ -19,7 +19,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addToCart, getCartTotal, remove } from "../../redux/Cart/action";
-import { AddItemToCart, deleteCartItem, isAuthenticated } from "../../api/api";
+import { AddItemToCart, deleteCartItem, isAuthenticated, isTokenValid } from "../../api/api";
 import HealthCareBreadcrumb from "../healthcare/HealthCareBreadcrumb";
 
 const Product = (props) => {
@@ -72,7 +72,7 @@ const Product = (props) => {
               className="imagebox"
               mr="15px"
               ml="30px"
-              // m={{ base: "auto", md: "auto" }}
+            // m={{ base: "auto", md: "auto" }}
             >
               <Box
                 className="image"
@@ -181,7 +181,7 @@ const Product = (props) => {
                         {Math.ceil(
                           ((data.crossed_price - data.actual_price) /
                             data.crossed_price) *
-                            100
+                          100
                         )}
                         % OFF
                       </Text>
@@ -215,6 +215,17 @@ const Product = (props) => {
                         ref={btnRef}
                         onClick={() => {
                           if (!isAuth) {
+                            toast({
+                              title: "User Not Logged in",
+                              status: "error",
+                              duration: 3000,
+                              isClosable: true,
+                              position: "top",
+                            });
+                            navigate("/");
+                            return;
+                          }
+                          else if (!isTokenValid()) {
                             toast({
                               title: "User Not Logged in",
                               status: "error",
@@ -297,6 +308,17 @@ const Product = (props) => {
                     onClick={() => {
                       // onOpen();
                       // setmodalpos(false);
+                      if (!isTokenValid()) {
+                        toast({
+                          title: "User Not Logged in",
+                          status: "error",
+                          duration: 3000,
+                          isClosable: true,
+                          position: "top",
+                        });
+                        navigate("/");
+                        return;
+                      }
                       updateCart(amt);
                     }}
                     bgColor="#10847E"

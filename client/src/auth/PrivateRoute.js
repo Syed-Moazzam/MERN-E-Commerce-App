@@ -1,9 +1,10 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { isAuthenticated } from "../api/api";
+import { isAuthenticated, isTokenValid } from "../api/api";
 
 const PrivateRoute = ({ children }) => {
   const { location } = useLocation();
-  return isAuthenticated().role !== "admin" ? (
+
+  return isAuthenticated().role !== "admin" && isTokenValid() ? (
     children
   ) : (
     <Navigate

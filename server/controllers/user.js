@@ -6,7 +6,7 @@ const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 const newJWTToken = (user) => {
   const { name, gender, email, username, _id } = user;
-  return jwt.sign({ name, gender, email, username, _id }, JWT_SECRET_KEY);
+  return jwt.sign({ name, gender, email, username, _id }, JWT_SECRET_KEY, { expiresIn: '1h' });
 };
 
 exports.signup = async (req, res) => {

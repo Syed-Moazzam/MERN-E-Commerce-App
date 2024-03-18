@@ -172,58 +172,44 @@ function AllRoutes() {
         exact
         path="/"
         element={
-          <PrivateRoute>
-            <HomeUser />
-          </PrivateRoute>
+          <HomeUser />
         }
       />
 
       <Route
         path="/healthcare"
         element={
-          <PrivateRoute>
-            <Healthcare />
-          </PrivateRoute>
+          <Healthcare />
         }
       />
       <Route
         path="/offers"
         element={
-          <PrivateRoute>
-            <Offers />
-          </PrivateRoute>
+          <Offers />
         }
       />
       <Route
         path="/health-blogs"
         element={
-          <PrivateRoute>
-            <HealthBlogs />
-          </PrivateRoute>
+          <HealthBlogs />
         }
       />
       <Route
         path="/:cat"
         element={
-          <PrivateRoute>
-            <ProductsByCategory />
-          </PrivateRoute>
+          <ProductsByCategory />
         }
       />
       <Route
         path="/healthcare/products/:cat"
         element={
-          <PrivateRoute>
-            <Products />
-          </PrivateRoute>
+          <Products />
         }
       />
       <Route
         path="/product/:id"
         element={
-          <PrivateRoute>
-            <SingleProduct />
-          </PrivateRoute>
+          <SingleProduct />
         }
       />
       <Route

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 export async function loginApi(email, password) {
   return axios.post(`${process.env.REACT_APP_API}/user/login`, {
@@ -213,6 +214,14 @@ export const isAuthenticated = () => {
   } else {
     return false;
   }
+};
+
+export const isTokenValid = () => {
+  const token = localStorage.getItem('token');
+  const decodedToken = token && jwtDecode(token);
+  const currentTime = Date.now();
+  if (decodedToken?.exp > currentTime) return true;
+  else return false;
 };
 
 export const loginAPI = "http://localhost:8000/user/login";
