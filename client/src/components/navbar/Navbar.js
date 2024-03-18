@@ -32,7 +32,6 @@ import { LoginIndividualSlider } from "../loginPages/QuickLogin";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "../../redux/Cart/action";
 import { isAuthenticated, isTokenValid } from "../../api/api";
-import { jwtDecode } from "jwt-decode";
 
 function Navbar() {
   const token = localStorage.getItem("token") || false;
