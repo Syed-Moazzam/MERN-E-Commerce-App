@@ -29,7 +29,7 @@ app.use(
 );
 app.use(cors());
 
-// express.static middleware for servering static files
+// express.static middleware for serving static files
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
