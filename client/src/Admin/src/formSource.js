@@ -151,7 +151,7 @@ export const doctorInputs = [
     id: 4,
     label: "Password",
     type: "password",
-    placeholder: "sohaib123",
+    placeholder: "hussain123",
     name: "password",
   },
   {
