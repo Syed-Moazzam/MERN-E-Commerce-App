@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const { readdirSync } = require("fs");
 require("dotenv").config();
 const cloudinary = require("cloudinary");
+const path = require('path');
 
 // app
 const app = express();
@@ -28,12 +29,17 @@ app.use(
 );
 app.use(cors());
 
+// express.static middleware for servering static files
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
 // routes middleware
 readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
 
 // port
 const port = process.env.PORT || 8000;
-
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
