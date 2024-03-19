@@ -19,11 +19,6 @@ export const tabCards = [
     img: "/images/healthcare.webp",
   },
   {
-    title: "Health Blogs",
-    path: "/health-blogs",
-    img: "/images/healthblogs.webp",
-  },
-  {
     title: "Offers",
     path: "/offers",
     img: "/images/offers.webp",

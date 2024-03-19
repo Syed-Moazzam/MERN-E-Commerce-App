@@ -18,7 +18,6 @@ import SingleProduct from "./SingleProduct";
 import Cart from "./Cart";
 import Search from "./Search";
 import Delivery from "./Delivery";
-import HealthBlogs from "./HealthBlogs";
 import Offers from "./Offers";
 import Orders from "../Admin/src/pages/orders/Orders";
 import Doctors from "../Admin/src/pages/doctors/Doctors";
@@ -186,12 +185,6 @@ function AllRoutes() {
         path="/offers"
         element={
           <Offers />
-        }
-      />
-      <Route
-        path="/health-blogs"
-        element={
-          <HealthBlogs />
         }
       />
       <Route

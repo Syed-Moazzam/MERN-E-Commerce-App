@@ -37,12 +37,6 @@ const Footer = () => {
                     About Us
                   </Text>
                 </Link>
-
-                <Link to="/health-blogs">
-                  <Text color="#30363C" fontSize="14px" mb={3}>
-                    Blog
-                  </Text>
-                </Link>
               </Box>
             </AccordionPanel>
           </AccordionItem>
@@ -225,12 +219,6 @@ const Footer = () => {
                 <Link>
                   <Text color="#30363C" fontSize="14px" mb={2}>
                     About Us
-                  </Text>
-                </Link>
-
-                <Link to="/health-blogs">
-                  <Text color="#30363C" fontSize="14px" mb={2}>
-                    Blog
                   </Text>
                 </Link>
               </Box>
