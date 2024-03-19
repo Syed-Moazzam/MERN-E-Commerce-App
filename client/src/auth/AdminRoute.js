@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { isAuthenticated } from "../api/api";
+import { isAuthenticated } from "../api";
 
 const AdminRoute = ({ children }) => {
   const { location } = useLocation();

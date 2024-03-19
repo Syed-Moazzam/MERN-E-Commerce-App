@@ -7,7 +7,7 @@ import {
   getOrderById,
   getProductsOfSingleOrder,
   updateOrderById,
-} from "../../../../api/api";
+} from "../../../../api";
 import { useNavigate, useParams } from "react-router-dom";
 import { Heading, useToast } from "@chakra-ui/react";
 import { Box, Image, Text } from "@chakra-ui/react";

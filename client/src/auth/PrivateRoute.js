@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { isAuthenticated, isTokenValid } from "../api/api";
+import { isAuthenticated, isTokenValid } from "../api";
 
 const PrivateRoute = ({ children }) => {
   const { location } = useLocation();

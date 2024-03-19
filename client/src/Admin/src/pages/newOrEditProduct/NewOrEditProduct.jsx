@@ -7,7 +7,7 @@ import {
   createProduct,
   getSingleProduct,
   updateProduct,
-} from "../../../../api/api";
+} from "../../../../api";
 import { useParams, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 

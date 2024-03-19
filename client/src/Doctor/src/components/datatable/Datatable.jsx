@@ -18,7 +18,7 @@ import {
   useToast,
   Button
 } from "@chakra-ui/react";
-import { updateAppointmentStatus } from "../../../../api/api";
+import { updateAppointmentStatus } from "../../../../api";
 
 const Datatable = ({ tableData, setIsDataUpdated }) => {
   const [data, setData] = useState(tableData?.tableBody);

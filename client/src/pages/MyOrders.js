@@ -1,7 +1,7 @@
 import { Box, Heading, Stack, Text } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { getOrders, isAuthenticated } from "../api/api";
+import { getOrders, isAuthenticated } from "../api";
 import HealthCareBreadcrumb from "../components/healthcare/HealthCareBreadcrumb";
 import Tabs from "../components/navbar/Tabs";
 

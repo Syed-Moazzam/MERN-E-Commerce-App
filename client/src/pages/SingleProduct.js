@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleProduct } from "../api/api";
+import { getSingleProduct } from "../api";
 import Product from "../components/singleProduct/Product";
 
 function SingleProduct() {

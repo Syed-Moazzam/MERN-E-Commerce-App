@@ -1,7 +1,7 @@
 import "./list.scss"
 import Sidebar from "../../components/sidebar/Sidebar"
 import Datatable from "../../components/datatable/Datatable"
-import { getAllUsersAdmin } from "../../../../api/api";
+import { getAllUsersAdmin } from "../../../../api";
 import { useEffect, useState } from "react";
 
 const List = () => {

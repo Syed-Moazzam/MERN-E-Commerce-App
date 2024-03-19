@@ -1,7 +1,7 @@
 import "./orders.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Datatable from "../../components/datatable/Datatable";
-import { getAllOrdersAdmin } from "../../../../api/api";
+import { getAllOrdersAdmin } from "../../../../api";
 import { useState, useEffect } from "react";
 
 const Orders = () => {

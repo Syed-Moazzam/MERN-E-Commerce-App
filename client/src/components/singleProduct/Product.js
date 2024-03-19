@@ -19,7 +19,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addToCart, getCartTotal, remove } from "../../redux/Cart/action";
-import { AddItemToCart, deleteCartItem, isAuthenticated, isTokenValid } from "../../api/api";
+import { AddItemToCart, deleteCartItem, isAuthenticated, isTokenValid } from "../../api";
 import HealthCareBreadcrumb from "../healthcare/HealthCareBreadcrumb";
 
 const Product = (props) => {

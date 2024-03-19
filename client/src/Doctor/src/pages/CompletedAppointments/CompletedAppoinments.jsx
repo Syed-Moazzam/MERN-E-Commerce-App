@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Sidebar from '../../components/sidebar/Sidebar';
 import './completedAppointments.scss';
 import Datatable from '../../components/datatable/Datatable';
-import { getCompletedAppointments } from '../../../../api/api';
+import { getCompletedAppointments } from '../../../../api';
 
 const CompletedAppointments = () => {
     const [compAppointments, setCompAppointments] = useState({

@@ -6,7 +6,7 @@ import {
   getDoctorById,
   isAuthenticated,
   updateDoctor,
-} from "../../../../api/api";
+} from "../../../../api";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 

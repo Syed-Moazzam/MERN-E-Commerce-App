@@ -20,8 +20,8 @@ import {
 } from "@chakra-ui/react";
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { loginAPI } from "../../allApi";
-import { getUserCart } from "../../api/api";
+import { loginAPI } from "../../api";
+import { getUserCart } from "../../api";
 import { getSuccess } from "../../redux/auth/action";
 import { setCart } from "../../redux/Cart/action";
 import { LogOut } from "./LogOut";

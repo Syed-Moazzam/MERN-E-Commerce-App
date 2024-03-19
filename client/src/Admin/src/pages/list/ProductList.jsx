@@ -2,7 +2,7 @@ import "./list.scss";
 import { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Datatable from "../../components/datatable/Datatable";
-import { getAllProductsAdmin } from "../../../../api/api";
+import { getAllProductsAdmin } from "../../../../api";
 
 const ProductList = () => {
   const [products, setProducts] = useState({

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./doctors.scss";
 import Datatable from "../../components/datatable/Datatable";
 import Sidebar from "../../components/sidebar/Sidebar";
-import { getAllDoctorsAdmin } from "../../../../api/api";
+import { getAllDoctorsAdmin } from "../../../../api";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState({

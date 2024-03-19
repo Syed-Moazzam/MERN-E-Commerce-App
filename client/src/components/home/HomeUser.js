@@ -4,7 +4,7 @@ import TabCarousal from "./TabCarousal";
 import SearchBar from "./SearchBar";
 import ShowProducts from "./ShowProducts";
 import ChooseUs from "./ChooseUs";
-import { getLatestProducts, getMostSellingProducts } from "../../api/api";
+import { getLatestProducts, getMostSellingProducts } from "../../api";
 
 function HomeUser() {
   const [products, setProducts] = useState([]);

@@ -7,7 +7,7 @@ import {
   getAllDoctorsAdmin,
   updateAppointmentHistory,
   isAuthenticated,
-} from "../api/api";
+} from "../api";
 import {
   AiFillClockCircle,
   AiOutlineCalendar,

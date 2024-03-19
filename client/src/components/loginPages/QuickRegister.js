@@ -21,7 +21,7 @@ import {
   FormControl,
   Image,
 } from "@chakra-ui/react";
-import { signupAPI } from "../../allApi";
+import { signupAPI } from "../../api";
 import { getSuccess } from "../../redux/auth/action";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";

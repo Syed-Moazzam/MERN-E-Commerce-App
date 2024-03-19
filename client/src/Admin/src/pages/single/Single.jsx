@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Chart from "../../components/chart/Chart";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getUserById, getcustomerOrders } from "../../../../api/api";
+import { getUserById, getcustomerOrders } from "../../../../api";
 import Datatable from "../../components/datatable/Datatable";
 import ManAvatar from "../../../avatars/man.png";
 import WomanAvatar from "../../../avatars/woman.png";

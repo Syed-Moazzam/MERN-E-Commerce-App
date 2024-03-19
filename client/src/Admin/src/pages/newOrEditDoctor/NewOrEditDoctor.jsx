@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import { createDoctor, getDoctorById, updateDoctor } from "../../../../api/api";
+import { createDoctor, getDoctorById, updateDoctor } from "../../../../api";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { Carousel } from "react-bootstrap";
 import { useToast } from "@chakra-ui/react";

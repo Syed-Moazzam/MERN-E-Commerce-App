@@ -26,7 +26,7 @@ import { CloseIcon } from "@chakra-ui/icons";
 import {
   getAllProductsByCategory,
   getAllProductsBySubCategory,
-} from "../api/api";
+} from "../api";
 
 function Products() {
   const getCurrPage = (value) => {

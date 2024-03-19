@@ -1,7 +1,7 @@
 import { HStack, Image, Text, Wrap } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllCategories } from "../../api/api";
+import { getAllCategories } from "../../api";
 
 function Cards() {
   const [categories, setCategories] = useState([]);

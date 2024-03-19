@@ -1,7 +1,7 @@
 import { Select } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { isAuthenticated, updateCartItem } from "../../api/api";
+import { isAuthenticated, updateCartItem } from "../../api";
 import { updateCart } from "../../redux/Cart/action";
 
 function QuantitySelecter({ id, amount }) {

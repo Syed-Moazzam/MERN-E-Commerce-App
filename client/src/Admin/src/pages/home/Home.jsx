@@ -6,17 +6,17 @@ import Featured from "../../components/featured/Featured";
 import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
 import { useEffect, useState } from "react";
-import { getDashboardData } from "../../../../api/api";
+import { getDashboardData } from "../../../../api";
 
 const Home = () => {
 
-  const [dataForChart,setDataForChart] = useState([])
-  const [todaySale,settodaySale] = useState(0)
-  const [weekSale,setweekSale] = useState(0)
-  const [monthSale,setmonthSale] = useState(0)
-  const [totalOrders,settotalOrders] = useState(0)
-  const [totalUsers,settotalUsers] = useState(0)
-  const [totalOrdersAmount,settotalOrdersAmount] = useState(0)
+  const [dataForChart, setDataForChart] = useState([])
+  const [todaySale, settodaySale] = useState(0)
+  const [weekSale, setweekSale] = useState(0)
+  const [monthSale, setmonthSale] = useState(0)
+  const [totalOrders, settotalOrders] = useState(0)
+  const [totalUsers, settotalUsers] = useState(0)
+  const [totalOrdersAmount, settotalOrdersAmount] = useState(0)
 
   useEffect(() => {
     window.addEventListener("error", (e) => {
@@ -40,19 +40,18 @@ const Home = () => {
 
   }, []);
 
-  const getDataForDashboard=()=>{
+  const getDataForDashboard = () => {
     getDashboardData()
-    .then((response)=>{
-      console.log(response);
-      setDataForChart(response.data.dataForChart)
-      settodaySale(response.data.todaySales)
-      setweekSale(response.data.weekSales)
-      setmonthSale(response.data.monthSales)
-      settotalOrders(response.data.totalOrders)
-      settotalUsers(response.data.totalUsers)
-      settotalOrdersAmount(response.data.totalOrdersAmount)
-    })
-    .catch((error)=>console.log(error))
+      .then((response) => {
+        setDataForChart(response.data.dataForChart)
+        settodaySale(response.data.todaySales)
+        setweekSale(response.data.weekSales)
+        setmonthSale(response.data.monthSales)
+        settotalOrders(response.data.totalOrders)
+        settotalUsers(response.data.totalUsers)
+        settotalOrdersAmount(response.data.totalOrdersAmount)
+      })
+      .catch((error) => console.log(error))
   }
 
   return (

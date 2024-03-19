@@ -14,7 +14,7 @@ import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/user/action";
 import { useNavigate } from "react-router-dom";
-import { isAuthenticated } from "../../api/api";
+import { isAuthenticated } from "../../api";
 
 export function LogOut() {
   const { isOpen, onOpen, onClose } = useDisclosure();

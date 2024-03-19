@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getSearchProducts } from "../api/api";
+import { getSearchProducts } from "../api";
 import { getCartTotal } from "../redux/Cart/action";
 
 function Search() {

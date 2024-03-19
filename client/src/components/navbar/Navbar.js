@@ -31,17 +31,40 @@ import Tabs from "./Tabs";
 import { LoginIndividualSlider } from "../loginPages/QuickLogin";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartTotal } from "../../redux/Cart/action";
-import { isAuthenticated, isTokenValid } from "../../api/api";
+import { isAuthenticated, isTokenValid } from "../../api";
 
 function Navbar() {
-  const token = localStorage.getItem("token") || false;
-  const dispatch = useDispatch();
-  const { cartItems, totalCount } = useSelector((state) => state.cart);
   const role = isAuthenticated().role;
+  const token = localStorage.getItem("token");
+  const auth = useSelector((state) => state.auth);
+
+  const { cartItems, totalCount } = useSelector((state) => state.cart);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleScroll = () => {
+    const position = window.scrollY;
+    setScrollPosition(position);
+  };
 
   useEffect(() => {
     dispatch(getCartTotal());
-  }, [cartItems]);
+
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("resize", () =>
+        setWindowWidth(window.innerWidth)
+      );
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [cartItems, auth]);
+
   const tabs = [
     {
       title: "Home",
@@ -89,31 +112,6 @@ function Navbar() {
       logo: <AiOutlineQuestionCircle />,
     },
   ];
-
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
-  const navigate = useNavigate();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
-    return () => {
-      window.removeEventListener("resize", () =>
-        setWindowWidth(window.innerWidth)
-      );
-    };
-  }, []);
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <Box position={"relative"}>
@@ -231,12 +229,12 @@ function Navbar() {
                 <Box display="flex" alignItems="center" mr="5px">
                   <TbDiscount2 fontSize="20px" />
                 </Box>
-                {windowWidth > 1104 && (
+                {window.innerWidth > 1104 && (
                   <Box mt="2px" fontWeight="600">
                     My Orders
                   </Box>
                 )}
-                {windowWidth < 1024 && windowWidth > 650 && (
+                {window.innerWidth < 1024 && window.innerWidth > 650 && (
                   <Box mt="2px" fontWeight="600">
                     My Orders
                   </Box>
@@ -267,12 +265,12 @@ function Navbar() {
                     </Center>
                   </Box>
                 }
-                {windowWidth > 1104 && (
+                {window.innerWidth > 1104 && (
                   <Box mt="2px" fontWeight="600">
                     Cart
                   </Box>
                 )}
-                {windowWidth < 1024 && windowWidth > 650 && (
+                {window.innerWidth < 1024 && window.innerWidth > 650 && (
                   <Box fontWeight="600" mt="2px">
                     Cart
                   </Box>

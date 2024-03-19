@@ -6,7 +6,7 @@ import { PaginationControl } from "react-bootstrap-pagination-control";
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { AiFillEye } from "react-icons/ai";
 import CustomBadge from "../customBadge/CustomBadge";
-import { deleteDoctor, deleteProduct } from "../../../../api/api";
+import { deleteDoctor, deleteProduct } from "../../../../api";
 import { Spinner } from '@chakra-ui/react'
 
 import {

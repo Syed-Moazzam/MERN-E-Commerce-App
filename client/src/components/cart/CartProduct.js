@@ -3,7 +3,7 @@ import { DeleteIcon } from "@chakra-ui/icons";
 import { Box, HStack, Image, Text, VStack } from "@chakra-ui/react";
 
 import { useDispatch } from "react-redux";
-import { deleteCartItem, isAuthenticated } from "../../api/api";
+import { deleteCartItem, isAuthenticated } from "../../api";
 import { remove } from "../../redux/Cart/action";
 import QuantitySelecter from "./QantitySelector";
 
@@ -69,7 +69,7 @@ function CartProduct(props) {
                   {Math.ceil(
                     ((productId.crossed_price - productId.actual_price) /
                       productId.crossed_price) *
-                      100
+                    100
                   )}
                   % OFF
                 </Text>

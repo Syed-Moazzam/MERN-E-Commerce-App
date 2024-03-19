@@ -20,7 +20,7 @@ import { AiFillRightCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { useNavigate } from "react-router-dom";
-import { createOrder, isAuthenticated } from "../api/api";
+import { createOrder, isAuthenticated } from "../api";
 import { clearCart } from "../redux/Cart/action";
 
 function Delivery() {

@@ -19,7 +19,7 @@ import HealthCareBreadcrumb from "../components/healthcare/HealthCareBreadcrumb"
 import Tabs from "../components/navbar/Tabs";
 
 import { CloseIcon } from "@chakra-ui/icons";
-import { getAllOfferProducts } from "../api/api";
+import { getAllOfferProducts } from "../api";
 
 function Offer() {
   const getCurrPage = (value) => {
