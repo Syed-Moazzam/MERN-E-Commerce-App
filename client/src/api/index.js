@@ -3,7 +3,6 @@ import { jwtDecode } from "jwt-decode";
 import getBaseUrl from './checkEnvironment';
 
 const baseUrl = getBaseUrl();
-console.log('baseUrl', baseUrl);
 
 export async function getUserApi() {
   return axios.get(`${baseUrl}/user/loggedInUser`);

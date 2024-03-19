@@ -104,6 +104,7 @@ function Products() {
           setSubCat(res.data.subCategories);
           setFilters(res.data.totalBrands);
           setTotalPages(Math.ceil(res.data.totalProducts / res.data.pageSize));
+          setLoading(false);
         })
         .catch(() => {
           setProducts([]);
@@ -112,8 +113,7 @@ function Products() {
           setFilters([]);
         })
         .finally(() => {
-          if (totalProducts === 0) setTimeout(() => setLoading(false), 1500);
-          else setLoading(false);
+          setLoading(false);
         });
     }
 
