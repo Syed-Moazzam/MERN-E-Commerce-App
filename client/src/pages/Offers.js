@@ -34,6 +34,7 @@ function Offer() {
 
     return value;
   };
+
   let arr = [];
   const [totalPages, setTotalPages] = useState();
   const [loading, setLoading] = useState(false);
@@ -56,6 +57,15 @@ function Offer() {
   useEffect(() => {
     setLoading(true);
 
+    let paramObj = { page };
+    if (sortBy) {
+      paramObj.sortBy = sortBy;
+    }
+    if (filterArr) {
+      paramObj.brand = filterArr;
+    }
+    setSearch(paramObj);
+
     getAllOfferProducts(page, sortBy)
       .then((res) => {
         setProducts(res.data.offerProducts);
@@ -66,24 +76,10 @@ function Offer() {
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, [page, filterArr, sortBy]);
+
   if (page > totalPages) {
     setPage(totalPages);
   }
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
-  useEffect(() => {
-    let paramObj = { page };
-    if (sortBy) {
-      paramObj.sortBy = sortBy;
-    }
-
-    if (filterArr) {
-      paramObj.brand = filterArr;
-    }
-
-    setSearch(paramObj);
-  }, [page, filterArr, sortBy]);
 
   for (let i = 0; i < totalPages; i++) arr[i] = i + 1;
 
