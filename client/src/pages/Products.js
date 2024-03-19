@@ -77,9 +77,21 @@ function Products() {
       setFilterArr([...filterArr, el]);
     }
   }
-  // console.log(filterArr);
+
   useEffect(() => {
     setLoading(true);
+
+    let paramObj = { page };
+    if (sortBy) {
+      paramObj.sortBy = sortBy;
+    }
+    if (value) {
+      paramObj.subCat = value;
+    }
+    if (filterArr) {
+      paramObj.brand = filterArr;
+    }
+    setSearch(paramObj);
 
     if (value) {
       handleCategoryChange();
@@ -92,31 +104,23 @@ function Products() {
           setFilters(res.data.totalBrands);
           setTotalPages(Math.ceil(res.data.totalProducts / res.data.pageSize));
         })
-        .catch((err) => console.log(err))
-        .finally(() => setLoading(false));
+        .catch(() => {
+          setProducts([]);
+          setTotalProducts(0);
+          setSubCat([]);
+          setFilters([]);
+        })
+        .finally(() => {
+          if (totalProducts === 0) setTimeout(() => setLoading(false), 1500);
+          else setLoading(false);
+        });
     }
-  }, [page, filterArr, value, sortBy]);
+
+  }, [page, filterArr, value, sortBy, cat]);
+
   if (page > totalPages) {
     setPage(totalPages);
   }
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
-  useEffect(() => {
-    let paramObj = { page };
-    if (sortBy) {
-      paramObj.sortBy = sortBy;
-    }
-    if (value) {
-      paramObj.subCat = value;
-    }
-
-    if (filterArr) {
-      paramObj.brand = filterArr;
-    }
-
-    setSearch(paramObj);
-  }, [page, value, filterArr, sortBy]);
 
   for (let i = 0; i < totalPages; i++) arr[i] = i + 1;
 
@@ -304,9 +308,9 @@ function Products() {
                 })}
               </HStack>
             }
-            {loading ? <Flex justifyContent="center" alignItems="center"><Spinner size="xl" thickness='4px' emptyColor='gray.200' /></Flex> : products?.length > 0 ? <ProductsGrid data={products} loading={loading} /> : <h3 style={{ textAlign: 'center', color: 'rgba(0, 0, 0, 0.7)' }}>No Data Available!</h3>}
+            {loading ? <Flex justifyContent="center" alignItems="center"><Spinner size="xl" thickness='4px' emptyColor='gray.200' /></Flex> : products?.length > 0 ? <ProductsGrid data={products} loading={loading} /> : <h3 style={{ textAlign: 'center', color: 'rgba(0, 0, 0, 0.7)' }}>No Products Available!</h3>}
 
-            {
+            {products?.length > 0 && !loading &&
               <HStack mt={"50px"} justify="center" spacing={"5px"}>
                 {arr.map((el) => {
                   if (el > +page + 3 && el !== +page && el !== +totalPages) {

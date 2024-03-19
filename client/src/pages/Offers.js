@@ -58,7 +58,6 @@ function Offer() {
 
     getAllOfferProducts(page, sortBy)
       .then((res) => {
-        console.log(res.data);
         setProducts(res.data.offerProducts);
         setTotalProducts(res.data.totalProducts);
         setFilters(res.data.totalBrands);
