@@ -96,6 +96,7 @@ function Products() {
     if (value) {
       handleCategoryChange();
     } else {
+      setTotalProducts(0);
       getAllProductsByCategory(cat, page, filterArr, sortBy)
         .then((res) => {
           setProducts(res.data.products);
