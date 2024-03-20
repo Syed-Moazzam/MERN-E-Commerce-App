@@ -66,18 +66,6 @@ function TabCarousal() {
       mt="80px"
     >
       <Box width="100%" position="relative">
-        {windowWidth > 1024 && scroll > 0 && (
-          <IconButton
-            onClick={onScrollX}
-            bg={"rgba(0,0,0,0.4)"}
-            position="absolute"
-            top="20"
-            left="-5"
-            borderRadius="50%"
-            icon={<AiOutlineLeft color="white" />}
-          ></IconButton>
-        )}
-
         <Flex
           paddingX={"10px"}
           width="100%"
@@ -136,17 +124,6 @@ function TabCarousal() {
             </Box>
           ))}
         </Flex>
-        {windowWidth > 1024 && scroll < 450 && (
-          <IconButton
-            onClick={onScrollY}
-            bg={"rgba(0,0,0,0.4)"}
-            position="absolute"
-            top="20"
-            right="-5"
-            borderRadius="50%"
-            icon={<AiOutlineRight color="white" />}
-          ></IconButton>
-        )}
       </Box>
     </Box>
   );

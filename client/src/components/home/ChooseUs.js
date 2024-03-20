@@ -5,7 +5,7 @@ const db = [
   {
     img: "/images/regUsers.svg",
     title: "10,000+",
-    para: "Registered users as of June 01, 2023",
+    para: "Registered users as of Feb 01, 2024",
   },
   {
     img: "/images/rider.svg",
