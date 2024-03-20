@@ -86,7 +86,7 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
 
   setTimeout(() => {
     setLoading(false);
-  }, baseUrl?.includes('localhost') ? 3500 : 5000);
+  }, baseUrl?.includes('localhost') ? 3500 : 6500);
 
   return (
     <>
