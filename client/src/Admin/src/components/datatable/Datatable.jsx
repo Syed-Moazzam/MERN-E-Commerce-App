@@ -47,7 +47,6 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
     if (tableTitle === "Doctors") {
       deleteDoctor(deleteId)
         .then((res) => {
-          console.log("res", res);
           setIsDataUpdated((prev) => !prev);
           setPage(1);
           onClose();
@@ -63,7 +62,6 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
     } else if (tableTitle === "Products") {
       deleteProduct(id)
         .then((res) => {
-          console.log("res", res);
           setIsDataUpdated((prev) => !prev);
           setPage(1);
           onClose();
@@ -86,7 +84,7 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
 
   setTimeout(() => {
     setLoading(false);
-  }, 3800);
+  }, 4200);
 
   return (
     <>

@@ -9,7 +9,6 @@ function CartStack() {
   const dispatch = useDispatch();
   const { cartItems, totalCount } = useSelector((state) => state.cart);
   const [loading, setLoading] = useState(false);
-  console.log(cartItems);
 
   if (cartItems.length < 1) {
     return (
