@@ -21,7 +21,6 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
-import getBaseUrl from "../../../../api/checkEnvironment";
 
 const Datatable = ({ tableTitle, tableData, setIsDataUpdated, loading }) => {
   const [data, setData] = useState(tableData?.tableBody);
@@ -31,7 +30,6 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated, loading }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef();
   const toast = useToast();
-  const baseUrl = getBaseUrl();
 
   useEffect(() => {
     onChangePage(page);
