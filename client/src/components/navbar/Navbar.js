@@ -212,7 +212,7 @@ function Navbar() {
         </Flex>
         <Flex alignItems={'center'} gap={"20px"}>
           {windowWidth > 1024 && role !== "admin" && role !== "doctor" && (
-            <Link className="hover_green">
+            <Link className="hover_green" style={{ outline: 'none' }}>
               <Box display="flex" fontSize="14px">
                 <Box display="flex" alignItems="center" mr="10px">
                   <AiOutlineUser fontSize="20px" />
