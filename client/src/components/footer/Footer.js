@@ -372,7 +372,7 @@ const Footer = () => {
                   color="#30363C"
                   fontSize="16px"
                 >
-                  © 2022 Fit Fables. All Rights Reserved
+                  © {new Date().getFullYear()} Fit Fables. All Rights Reserved
                 </Text>
               </Link>
             </Box>

@@ -205,10 +205,12 @@ function Navbar() {
           )}
         </Flex>
 
-        <Flex align="center" justifyContent={scrollPosition > 100 ? 'space-between' : 'center'} gap="20px" width={scrollPosition > 100 && 'calc(100% - 38%)'}>
+        <Flex align="center">
           {scrollPosition > 100 && role !== "admin" && role !== "doctor" && (
             <NavSearch />
           )}
+        </Flex>
+        <Flex alignItems={'center'} gap={"20px"}>
           {windowWidth > 1024 && role !== "admin" && role !== "doctor" && (
             <Link className="hover_green">
               <Box display="flex" fontSize="14px">
