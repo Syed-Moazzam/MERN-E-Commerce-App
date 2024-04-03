@@ -1,4 +1,4 @@
-import { HStack, Image, Text, Wrap } from "@chakra-ui/react";
+import { Center, HStack, Image, Spinner, Text, Wrap } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllCategories } from "../../api";
@@ -14,7 +14,11 @@ function Cards() {
         setCategories(res.data.totalCategories);
       })
       .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false);
+        }, 1200);
+      });
   }
 
   useEffect(() => {
@@ -23,7 +27,7 @@ function Cards() {
 
   return (
     <>
-      <Wrap
+      {loading ? <Center height={'300px'}><Spinner size='xl' thickness='4px' emptyColor='gray.200' /></Center> : <Wrap
         padding={1}
         mt={5}
         gap={{ base: "10px", sm: "10px", lg: "15px", xl: "20px" }}
@@ -47,7 +51,7 @@ function Cards() {
             </HStack>
           </Link>
         ))}
-      </Wrap>
+      </Wrap>}
     </>
   );
 }

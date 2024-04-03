@@ -20,6 +20,8 @@ const Single = () => {
   const [orders, setOrders] = useState({ tableHeader: [], tableBody: [] });
   const [chartData, setchartData] = useState([]);
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     let userId = params.userId;
     getUserById(userId)
@@ -36,8 +38,11 @@ const Single = () => {
       })
       .catch((err) => console.log(err));
 
+    setLoading(true);
     getcustomerOrders(userId)
       .then((response) => {
+        setLoading(false);
+
         let fetchData = response.data.data;
         if (fetchData.length > 0) {
           let tableHeader = [
@@ -62,22 +67,6 @@ const Single = () => {
             tableBody,
           });
         }
-        // if (fetchData.length > 0) {
-        //   let tableHeader = ["Order ID", "Quantity", "Status", "Total"];
-        //   let tableBody = [];
-        //   fetchData.map((order) => {
-        //     tableBody.push({
-        //       orderId: order._id,
-        //       quantity: order.cartItems ? order.cartItems.length : 0,
-        //       status: order.status ? order.status : "Pending",
-        //       total: 500,
-        //     });
-        //   });
-        //   setOrders({
-        //     tableHeader,
-        //     tableBody,
-        //   });
-        // }
         setchartData(response.data.dataForChart);
       })
       .catch((err) => console.log(err));
@@ -90,8 +79,6 @@ const Single = () => {
         {/* <Navbar /> */}
         <div className="top">
           <div className="left">
-            {/* <div className="editButton">Edit</div>
-            <h1 className="title">Information</h1> */}
             <div className="item">
               <img
                 // src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
@@ -134,7 +121,7 @@ const Single = () => {
         <div className="bottom">
           <h1 className="title">Last Transactions</h1>
           <div className="ordersContainer">
-            <Datatable tableTitle="Last Transactions" tableData={orders} />
+            <Datatable tableTitle="Last Transactions" tableData={orders} loading={loading} />
           </div>
         </div>
       </div>

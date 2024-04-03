@@ -10,9 +10,14 @@ const Orders = () => {
     tableBody: [],
   });
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
+    setLoading(true);
     getAllOrdersAdmin()
       .then((res) => {
+        setLoading(false);
+
         if (res.data && res.data.data && res.data.data.length > 0) {
           let fetchData = res.data.data;
           if (fetchData.length > 0) {
@@ -47,7 +52,7 @@ const Orders = () => {
     <div className="orders">
       <Sidebar />
       <div className="ordersContainer">
-        <Datatable tableTitle="Orders" tableData={orders} />
+        <Datatable tableTitle="Orders" tableData={orders} loading={loading} />
       </div>
     </div>
   );

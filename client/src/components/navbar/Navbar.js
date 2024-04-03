@@ -205,7 +205,7 @@ function Navbar() {
           )}
         </Flex>
 
-        <Flex align="center" justifyContent="center" gap="20px">
+        <Flex align="center" justifyContent={scrollPosition > 100 ? 'space-between' : 'center'} gap="20px" width={scrollPosition > 100 && 'calc(100% - 38%)'}>
           {scrollPosition > 100 && role !== "admin" && role !== "doctor" && (
             <NavSearch />
           )}

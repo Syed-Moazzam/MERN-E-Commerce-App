@@ -11,10 +11,14 @@ const ProductList = () => {
   });
 
   const [isDataUpdated, setIsDataUpdated] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getAllProductsAdmin()
       .then((res) => {
+        setLoading(false);
+
         if (res.data && res.data.data && res.data.data.length > 0) {
           let fetchData = res.data.data.map(
             ({
@@ -59,7 +63,7 @@ const ProductList = () => {
     <div className="list">
       <Sidebar />
       <div className="listContainer">
-        <Datatable tableTitle="Products" tableData={products} setIsDataUpdated={setIsDataUpdated} />
+        <Datatable tableTitle="Products" tableData={products} setIsDataUpdated={setIsDataUpdated} loading={loading} />
       </div>
     </div>
   );

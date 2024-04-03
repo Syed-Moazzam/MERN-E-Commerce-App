@@ -10,12 +10,15 @@ const CompletedAppointments = () => {
         tableBody: [],
     });
 
+    const [loading, setLoading] = useState(false);
+
     const doctor = JSON.parse(localStorage.getItem("jwt"));
     const doctorId = doctor?._id;
 
     useEffect(() => {
+        setLoading(true);
         getCompletedAppointments(doctorId).then((res) => {
-            console.log('completed appointment', res);
+            setLoading(false);
             let tableBody = [];
             let tableHeader = ["Name", "Email", "Phone", "Address", "Gender", "Status"];
             tableBody = res?.data?.data;
@@ -32,7 +35,7 @@ const CompletedAppointments = () => {
                 </div>
 
                 <div className="right">
-                    <Datatable tableData={compAppointments} />
+                    <Datatable tableData={compAppointments} loading={loading} />
                 </div>
             </div>
         </div>

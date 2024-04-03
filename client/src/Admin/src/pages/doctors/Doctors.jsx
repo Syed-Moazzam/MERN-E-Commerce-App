@@ -11,11 +11,14 @@ const Doctors = () => {
   });
 
   const [isDataUpdated, setIsDataUpdated] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getAllDoctorsAdmin()
       .then((res) => {
-        console.log(res);
+        setLoading(false);
+
         let tableBody = res?.data?.data;
         const tableHeader = [
           "Name",
@@ -86,7 +89,7 @@ const Doctors = () => {
     <div className="doctors">
       <Sidebar />
       <div className="doctorsContainer">
-        <Datatable tableTitle="Doctors" tableData={doctors} setIsDataUpdated={setIsDataUpdated} />
+        <Datatable tableTitle="Doctors" tableData={doctors} setIsDataUpdated={setIsDataUpdated} loading={loading} />
       </div>
     </div>
   )

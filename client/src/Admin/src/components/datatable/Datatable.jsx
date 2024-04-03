@@ -23,11 +23,10 @@ import {
 } from "@chakra-ui/react";
 import getBaseUrl from "../../../../api/checkEnvironment";
 
-const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
+const Datatable = ({ tableTitle, tableData, setIsDataUpdated, loading }) => {
   const [data, setData] = useState(tableData?.tableBody);
   const [deleteId, setDeleteId] = useState("");
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef();
@@ -83,10 +82,6 @@ const Datatable = ({ tableTitle, tableData, setIsDataUpdated }) => {
     setDeleteId(id);
     onOpen();
   };
-
-  setTimeout(() => {
-    setLoading(false);
-  }, baseUrl?.includes('localhost') ? 3500 : 7000);
 
   return (
     <>

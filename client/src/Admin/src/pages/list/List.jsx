@@ -8,11 +8,16 @@ const List = () => {
   const [users, setUsers] = useState({
     tableHeader: [],
     tableBody: []
-  })
+  });
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getAllUsersAdmin()
       .then((res) => {
+        setLoading(false);
+
         if (res.data && res.data.data && res.data.data.length > 0) {
           let fetchData = res.data.data.map(({ createdAt, updatedAt, password, gender, role, username, authType, __v, ...rest }) => { return rest })
           if (fetchData.length > 0) {
@@ -32,7 +37,7 @@ const List = () => {
       <Sidebar />
       <div className="listContainer">
         {/* <Navbar/> */}
-        <Datatable tableTitle="Users" tableData={users} />
+        <Datatable tableTitle="Users" tableData={users} loading={loading} />
       </div>
     </div>
   );

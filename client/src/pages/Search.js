@@ -7,6 +7,7 @@ import {
   Hide,
   Image,
   Text,
+  Spinner,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -53,7 +54,7 @@ function Search() {
     >
       {/* Left */}
       {loading ? (
-        <Center>Loading...</Center>
+        <Center width={'45%'}><Spinner size='xl' thickness='4px' emptyColor='gray.200' /></Center>
       ) : data.length > 0 ? (
         <Box
           w={{ base: "90%", sm: "90%", md: "90%", lg: "60%", xl: "60%" }}

@@ -43,7 +43,7 @@ function Products() {
   };
   let arr = [];
   const [totalPages, setTotalPages] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { cat } = useParams();
   const newCat = cat.split("-");
   const catSplit = newCat.join(" ");
@@ -58,6 +58,7 @@ function Products() {
   const [totalProducts, setTotalProducts] = useState(0);
 
   function handleCategoryChange() {
+    setLoading(true);
     getAllProductsBySubCategory(page, value, cat, filterArr, sortBy)
       .then((res) => {
         setProducts(res.data.products);
@@ -79,8 +80,6 @@ function Products() {
   }
 
   useEffect(() => {
-    setLoading(true);
-
     let paramObj = { page };
     if (sortBy) {
       paramObj.sortBy = sortBy;
@@ -96,6 +95,7 @@ function Products() {
     if (value) {
       handleCategoryChange();
     } else {
+      setLoading(true);
       setTotalProducts(0);
       getAllProductsByCategory(cat, page, filterArr, sortBy)
         .then((res) => {
