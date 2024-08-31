@@ -12,7 +12,6 @@ import {
   Accordion,
   AccordionItem,
   AccordionButton,
-  AccordionIcon,
   Hide,
   useToast,
 } from "@chakra-ui/react";
@@ -22,7 +21,6 @@ import StripeCheckout from "react-stripe-checkout";
 import { useNavigate } from "react-router-dom";
 import { createOrder, isAuthenticated } from "../api";
 import { clearCart } from "../redux/Cart/action";
-import getBaseUrl from "../api/checkEnvironment";
 
 function Delivery() {
   const { totalAmount, totalOriginalAmount, cartItems } = useSelector((state) => state.cart);
@@ -31,7 +29,6 @@ function Delivery() {
   const userId = isAuthenticated()._id;
   const toast = useToast();
   const navigate = useNavigate();
-  const baseUrl = getBaseUrl();
 
   const currentDate = new Date();
 
@@ -71,7 +68,7 @@ function Delivery() {
   const handlePayment = async (token) => {
     try {
       const response = await axios({
-        url: `${baseUrl}/payment`,
+        url: '/api/payment',
         method: "POST",
         data: {
           amount: amountToPay,

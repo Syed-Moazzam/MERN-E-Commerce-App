@@ -19,19 +19,17 @@ import {
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import getBaseUrl from "../api/checkEnvironment";
 
 const Consultation = () => {
   const [doctors, setDoctors] = useState([]);
   const toast = useToast();
   const email = isAuthenticated().email;
   const navigate = useNavigate();
-  const baseUrl = getBaseUrl();
 
   const handlePayment = async (token, doctorId, price) => {
     try {
       const response = await axios({
-        url: `${baseUrl}/payment`,
+        url: '/api/payment',
         method: "POST",
         data: {
           amount: price,
